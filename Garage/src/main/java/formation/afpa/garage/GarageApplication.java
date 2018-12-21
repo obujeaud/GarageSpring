@@ -77,7 +77,7 @@ public class GarageApplication implements CommandLineRunner {
 
 		l.info(serv.getGarageId(2).toString());
 
-		serv.deleteGarageId(1);
+		serv.getPersonId(1).ajoutVoiture(serv.getVoitureId(3));
 
 	}
 }
