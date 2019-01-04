@@ -6,6 +6,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.transaction.Transactional;
@@ -26,6 +27,16 @@ public class Box {
 	private double surface;
 	@OneToOne(cascade = CascadeType.REMOVE, mappedBy = "lBox")
 	private Location loc;
+	@ManyToOne
+	private Garage g;
+
+	public Garage getG() {
+		return g;
+	}
+
+	public void setG(Garage g) {
+		this.g = g;
+	}
 
 	public Location getLoc() {
 		return loc;

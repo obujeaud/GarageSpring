@@ -6,6 +6,7 @@ import java.util.Set;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -26,8 +27,12 @@ public class Garage {
 	private String nom;
 	@OneToOne(cascade = CascadeType.ALL)
 	private Address address;
-	@OneToMany(cascade = CascadeType.ALL)
+	@OneToMany(mappedBy="g", cascade= {CascadeType.REMOVE, CascadeType.REFRESH}, fetch=FetchType.LAZY)
 	private Set<Box> lBox = new HashSet<>();
+
+	public Set<Box> getlBox() {
+		return lBox;
+	}
 
 	public Garage(String nom, Address address) {
 		super();
